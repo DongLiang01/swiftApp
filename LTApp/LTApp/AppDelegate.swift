@@ -20,10 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: UISceneSession Lifecycle
     //场景配置的方法
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        print("请求创建新的场景")
         // 当创建新场景时调用
         // 返回一个配置好的 UISceneConfiguration 对象
         //这里会默认传name: Default Configuration，是在info.plist文件里默认配置好的，如果想给某个场景一些特殊的配置，就需要先在info.plist里创建好配置，写一个name，这里再把这个name传进去就好了
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        if options.userActivities.first?.activityType == "OpenSecondaryWindow" {
+            //判断是哪一个场景，这个值是创建场景时自定义设置的，可以设置不同的配置
+            return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        }else{
+            return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        }
     }
     
     //场景被丢弃时调用的方法
