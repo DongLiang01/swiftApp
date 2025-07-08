@@ -3,6 +3,7 @@ platform :ios, '13.0'
 
 target 'LTApp' do
   pod 'SnapKit'
+  pod 'Alamofire'   #网络框架
 end
 
 
