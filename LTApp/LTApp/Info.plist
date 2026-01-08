@@ -5,7 +5,7 @@
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
-		<false/>
+		<true/>
 		<key>UISceneConfigurations</key>
 		<dict>
 			<key>UIWindowSceneSessionRoleApplication</key>
@@ -17,8 +17,8 @@
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
 					<string>Main</string>
-                    <key>UISceneClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).CustomWindowScene</string>
+					<key>UISceneClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).CustomWindowScene</string>
 				</dict>
 			</array>
 		</dict>

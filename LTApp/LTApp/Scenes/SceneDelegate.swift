@@ -17,6 +17,42 @@ class CustomWindowScene: UIWindowScene {
     var windowTag: String = "unTagged"
 }
 
+/**
+ app启动时调用：
+ 1. func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        //窗口初始化
+    }
+ 2. func sceneWillEnterForeground(_ scene: UIScene) {
+        //场景进入前台
+    }
+ 3. func sceneDidBecomeActive(_ scene: UIScene) {
+        //场景进入活动状态
+    }
+ 
+ 如果info.plist文件里Enable Multiple Scenes设置yes的话，第一步就要调这个方法创建场景了，设置为no的是，不会执行下面，会正常执行上面三个步骤，但是不能创建新的场景窗口了
+ func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+     //请求创建场景
+ }
+ 
+ 启动之后，创建新的场景：
+ 1. func sceneWillResignActive(_ scene: UIScene) {
+        //当前场景窗口先设置为非活动状态
+    }
+ 2.  func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) ->   UISceneConfiguration {
+          //请求创建场景
+      }
+ 3. func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        //窗口初始化
+    }
+4. func sceneWillEnterForeground(_ scene: UIScene) {
+        //场景进入前台
+   }
+5. func sceneDidBecomeActive(_ scene: UIScene) {
+        //场景进入活动状态
+   }
+ 6. func sceneDidEnterBackground(_ scene: UIScene) {上一个场景进入后台}
+ **/
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -29,13 +65,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             //场景二
             windowScene.windowTag = "secondSceneTag"
             window = UIWindow(windowScene: windowScene)
-            window?.rootViewController = SecondViewController()
+            window?.rootViewController = UINavigationController(rootViewController: SecondViewController())
             window?.makeKeyAndVisible()
             print("次级窗口已初始化：\(windowScene.windowTag)")
         }else{
             windowScene.windowTag = "firstSceneTag"
             window = UIWindow(windowScene: windowScene)
-            window?.rootViewController = DLViewController()
+            window?.rootViewController = UINavigationController(rootViewController: DLViewController())
             window?.makeKeyAndVisible()
             print("主窗口已初始化：\(windowScene.windowTag)")
         }
